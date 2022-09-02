@@ -1,5 +1,6 @@
-import { createRouter, createWebHistory } from "vue-router"
-import HomeView from "../views/HomeView.vue"
+import { createRouter, createWebHistory } from "vue-router";
+import HomeView from "../views/HomeView.vue";
+import SignUp from "../views/SignUp.vue";
 
 const routes = [
   {
@@ -16,11 +17,24 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
-]
+  {
+    // sign upへの遷移
+    path: "/signup",
+    name: "SignUp",
+    // component: () => import("../views/SignUp.vue"),
+    component: SignUp,
+  },
+  {
+    // sign inへの遷移
+    path: "/signin",
+    name: "SignIn",
+    component: () => import("../views/SignIn.vue"),
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-})
+});
 
-export default router
+export default router;
