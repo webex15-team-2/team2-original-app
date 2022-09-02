@@ -1,48 +1,14 @@
 <template>
-  <h2>企業名</h2>
-  <input type="text" v-model="company" />
-  <h2>テーマ</h2>
-  <input type="text" v-model="esTheme" />
-  <h2>字数制限</h2>
-  <input type="number" v-model="limit" />
-  <h2>ES</h2>
-  <textarea cols="30" rows="10" v-model="esContent"></textarea>
-  <button v-on:click="post">保存</button>
+  <esHozonVue />
 </template>
 
 <script>
-import { doc, setDoc } from "firebase/firestore";
-import { db } from "@/firebase.js";
+import esHozonVue from "@/views/eshozon.vue";
 
 export default {
+  components: { esHozonVue },
   data() {
-    return {
-      company: "",
-      esTheme: "",
-      limit: "",
-      esContent: "",
-      userId: "",
-    };
-  },
-  methods: {
-    async post() {
-      const esData = {
-        kigyou: this.company,
-        theme: this.esTheme,
-        seigen: this.limit,
-        es: this.esContent,
-      };
-      this.userId = "user2";
-      // ここにユーザIDが入る
-
-      await setDoc(doc(db, "users", this.userId), esData).then(() => {
-        this.newData.push(esData);
-      });
-      // usersコレクションの名前がユーザIDのドキュメントにデータが保存される
-
-      this.company = this.esTheme = this.limit = this.esContent = "";
-      // 保存後にボックスは空になる
-    },
+    return {};
   },
 };
 </script>
