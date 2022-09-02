@@ -1,10 +1,17 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <esHozonVue />
 </template>
+
+<script>
+import esHozonVue from "@/views/eshozon.vue";
+
+export default {
+  components: { esHozonVue },
+  data() {
+    return {};
+  },
+};
+</script>
 
 <style>
 #app {
