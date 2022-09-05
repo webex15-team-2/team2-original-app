@@ -4,6 +4,7 @@ import SignIn from "../views/SignIn";
 import SignUp from "../views/SignUp.vue";
 import MyPage from "../views/RegisterES.vue";
 
+
 const routes = [
   {
     path: "/",
@@ -42,6 +43,7 @@ const routes = [
     // component: () =>
     //   import(/* webpackChunkName: "about" */ "../views/SignIn.vue"),
   },
+
 ];
 
 const router = createRouter({

@@ -15,8 +15,8 @@
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 export default {
   name: "HomeView",
   components: {
