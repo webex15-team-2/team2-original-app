@@ -1,14 +1,60 @@
 <template>
-  <esHozonVue />
+  <nav>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>|
+    <div v-if="!authState" style="display: inline-block; _display: inline">
+      <router-link to="/signin">Sign In</router-link>|
+      <router-link to="/signup">Sign Up</router-link>
+    </div>
+    <div v-else style="display: inline-block; _display: inline">
+      <router-link to="/mypage">My Page</router-link>|
+      <div style="display: inline-block; _display: inline" @click="signOut">
+        Sign Out
+      </div>
+    </div>
+  </nav>
+  <router-view />
+  <RegisterES />
 </template>
 
 <script>
-import esHozonVue from "@/views/eshozon.vue";
+// import RegisterES from "@/views/RegisterES.vue";
+
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 export default {
-  components: { esHozonVue },
+  // components: { RegisterES },
   data() {
-    return {};
+    return { authState: false, emailVerified: "" };
+  },
+
+  methods: {
+    signOut() {
+      const auth = getAuth();
+      signOut(auth)
+        .then(() => {
+          // Sign-out successful.
+          alert("サインアウトしました");
+        })
+        .catch((error) => {
+          // An error happened.
+          alert(error);
+        });
+    },
+  },
+
+  mounted() {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.authState = true;
+        this.emailVerified = user.emailVerified ? "済" : "未";
+      } else {
+        this.authState = false;
+        this.emailVerified = "-";
+      }
+    });
+
   },
 };
 </script>
