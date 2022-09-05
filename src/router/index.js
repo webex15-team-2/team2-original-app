@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import SignIn from "../views/SignIn";
 import SignUp from "../views/SignUp.vue";
+import MyPage from "../views/RegisterES.vue";
 
 const routes = [
   {
@@ -20,15 +22,25 @@ const routes = [
   {
     // sign upへの遷移
     path: "/signup",
-    name: "SignUp",
+    name: "signup",
     // component: () => import("../views/SignUp.vue"),
     component: SignUp,
   },
   {
     // sign inへの遷移
     path: "/signin",
-    name: "SignIn",
-    component: () => import("../views/SignIn.vue"),
+    name: "signin",
+    component: SignIn,
+    // component: () =>
+    //   import(/* webpackChunkName: "about" */ "../views/SignIn.vue"),
+  },
+  {
+    // sign inへの遷移
+    path: "/mypage",
+    name: "mypage",
+    component: MyPage,
+    // component: () =>
+    //   import(/* webpackChunkName: "about" */ "../views/SignIn.vue"),
   },
 ];
 

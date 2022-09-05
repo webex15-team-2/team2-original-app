@@ -27,12 +27,17 @@ import {
   //   onAuthStateChanged,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "@/firebase.js";
 
 export default {
+  name: "SignUp",
   data() {
     return {
       emailAddress: "",
       password: "",
+
+      uid: "",
     };
   },
   methods: {
@@ -41,8 +46,20 @@ export default {
       createUserWithEmailAndPassword(auth, this.emailAddress, this.password)
         .then((userCredential) => {
           const user = userCredential.user;
+          this.uid = user.uid;
           console.log(user);
           console.log("user created");
+          console.log(this.uid);
+
+          const esData = {
+            company: "",
+            theme: "",
+            limit: "",
+            es: "",
+          };
+          // ここにユーザIDが入る
+          setDoc(doc(db, "users", this.uid), esData);
+          // usersコレクションの名前がユーザIDのドキュメントにデータが保存される
         })
         .catch((error) => {
           alert(error.message);
@@ -53,7 +70,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 .btn,

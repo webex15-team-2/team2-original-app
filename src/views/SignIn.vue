@@ -17,9 +17,13 @@
     </form>
   </div>
 </template>
+
 <script>
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 export default {
+  name: "SignIn",
+
   data() {
     return {
       emailAddress: "",
@@ -28,15 +32,16 @@ export default {
   },
   methods: {
     SignIn() {
-      try {
-        const auth = getAuth();
+      const auth = getAuth();
 
+      try {
         signInWithEmailAndPassword(auth, this.emailAddress, this.password)
           .then((userCredential) => {
             const user = userCredential.user;
             console.log(user);
             console.log("ログイン成功");
             alert("ログイン成功");
+            this.$router.push("/");
           })
           .catch((error) => {
             console.error(error);
@@ -49,7 +54,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 .btn,

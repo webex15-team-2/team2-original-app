@@ -8,14 +8,15 @@
     <img alt="Vue logo" src="../assets/logo.png" />
     <p>HOME</p>
     <p>ログイン状態: {{ authState }}</p>
-    <p>メール認証: {{ emailVerified }}</p>
-    <button class="btn btn-secondary" @click="signOut">サインアウト</button>
+    <!-- <p>メール認証: {{ emailVerified }}</p>
+    <button class="btn btn-secondary" @click="signOut">サインアウト</button>  -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld.vue";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default {
   name: "HomeView",
   components: {
@@ -26,6 +27,7 @@ export default {
     return {
       // feature/signinに関する処理 //
 
+      // loginState: AuthState.loginState,
       authState: "",
       emailVerified: "",
 
@@ -40,17 +42,16 @@ export default {
     // feature/signinに関する処理終わり//
   },
   mounted() {
-    // feature/signinに関する処理 //
-    // firebase.auth().onAuthStateChanged((user) => {
-    //   if (user) {
-    //     this.authState = "ログイン";
-    //     this.emailVerified = user.emailVerified ? "済" : "未";
-    //   } else {
-    //     this.authState = "ログアウト";
-    //     this.emailVerified = "-";
-    //   }
-    // });
-    // feature/signinに関する処理終わり//
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.authState = "ログイン";
+        this.emailVerified = user.emailVerified ? "済" : "未";
+      } else {
+        this.authState = "ログアウト";
+        this.emailVerified = "-";
+      }
+    });
   },
 };
 </script>
