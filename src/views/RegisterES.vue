@@ -2,7 +2,10 @@
   <h2>企業名</h2>
   <input type="text" v-model="company" />
   <h2>テーマ</h2>
-  <input type="text" v-model="esTheme" />
+  <select type="text" v-model="esTheme">
+    <option value="がくちか">がくちか</option>
+    <option value="学チカ">学チカ</option>
+  </select>
   <h2>字数制限</h2>
   <input type="number" v-model="limit" />
   <h2>ES</h2>
@@ -11,7 +14,7 @@
 </template>
 
 <script>
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, collection } from "firebase/firestore";
 import { db } from "@/firebase.js";
 export default {
   name: "RegisterES",
@@ -22,6 +25,7 @@ export default {
       limit: "",
       esContent: "",
       userId: "",
+      postCount: 0,
     };
   },
   methods: {
@@ -33,8 +37,10 @@ export default {
         es: this.esContent,
       };
       this.userId = "user2";
+      this.postCount = this.postCount + 1;
       // ここにユーザIDが入る
-      await setDoc(doc(db, "users", this.userId), esData);
+      const usersColRef = collection(db, "users", this.userId, "posts");
+      await setDoc(doc(usersColRef, `post${this.postCount}`), esData);
       // usersコレクションの名前がユーザIDのドキュメントにデータが保存される
       this.company = this.esTheme = this.limit = this.esContent = "";
       // 保存後にボックスは空になる
