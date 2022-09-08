@@ -16,6 +16,8 @@
 <script>
 import { doc, setDoc, collection } from "firebase/firestore";
 import { db } from "@/firebase.js";
+import { getAuth } from "@firebase/auth";
+
 export default {
   name: "RegisterES",
   data() {
@@ -26,20 +28,24 @@ export default {
       esContent: "",
       userId: "",
       postCount: 0,
+      user: "",
+      auth: "",
     };
   },
   methods: {
     async post() {
+      const auth = getAuth();
+      const user = auth.currentUser;
       const esData = {
         company: this.company,
         theme: this.esTheme,
         limit: this.limit,
         es: this.esContent,
       };
-      this.userId = "user2";
       this.postCount = this.postCount + 1;
+
+      const usersColRef = collection(db, "users", user.uid, "posts");
       // ここにユーザIDが入る
-      const usersColRef = collection(db, "users", this.userId, "posts");
       await setDoc(doc(usersColRef, `post${this.postCount}`), esData);
       // usersコレクションの名前がユーザIDのドキュメントにデータが保存される
       this.company = this.esTheme = this.limit = this.esContent = "";
