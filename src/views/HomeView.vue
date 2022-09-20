@@ -5,12 +5,20 @@
   </div> -->
 
   <div>
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <p>HOME</p>
-    <p>ログイン状態: {{ authState }}</p>
+    <!-- <p>HOME</p> -->
+    <!-- <p>ログイン状態: {{ authState }}</p> -->
     <!-- <p>メール認証: {{ emailVerified }}</p>
     <button class="btn btn-secondary" @click="signOut">サインアウト</button>  -->
+    <pre>就活のエントリーシート(ES)で困ったことはありませんか?<br>
+    企業に合わせて作成した複数のESの管理は大変ではないでしょうか？<br>
+    このサイトは複数のESを保存しておけるサイトです!</pre>
   </div>
+  <img
+    class="image1"
+    src="../assets/undraw_sharing_knowledge_03vp.png"
+    alt="写真1"
+  />
+  <img class="image2" src="../assets/undraw_join_re_w1lh.png" alt="写真2" />
 </template>
 
 <script>
@@ -55,3 +63,16 @@ export default {
   },
 };
 </script>
+<style scoped>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+.image1 {
+  height: 150px;
+  margin-bottom: 50px;
+}
+
+.image2 {
+  height: 250px;
+  margin-left: 100px;
+  margin-top: 50px;
+}
+</style>
