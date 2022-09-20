@@ -62,6 +62,7 @@ export default {
 body {
   background-image: url(./assets/backgroundpaper.png);
   background-size: cover;
+  margin-bottom: 100px;
 }
 
 #app {
