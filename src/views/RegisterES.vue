@@ -13,8 +13,8 @@
   <div class="box">
     <textarea cols="30" rows="10" v-model="esContent"></textarea>
     <button v-on:click="post">保存</button>
+  </div>
 
-  
   <div>
     <h2>取得</h2>
     <button v-on:click="getData">取得</button>
@@ -26,7 +26,6 @@
       本文：{{ Syutoku.es }}<br />
       -------------------------------------
     </div>
-
   </div>
 </template>
 
