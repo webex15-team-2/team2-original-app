@@ -9,8 +9,12 @@
   <h2>字数制限</h2>
   <input type="number" v-model="limit" />
   <h2>ES</h2>
-  <textarea cols="30" rows="10" v-model="esContent"></textarea>
-  <button v-on:click="post">保存</button>
+
+  <div class="box">
+    <textarea cols="30" rows="10" v-model="esContent"></textarea>
+    <button v-on:click="post">保存</button>
+
+  
   <div>
     <h2>取得</h2>
     <button v-on:click="getData">取得</button>
@@ -22,6 +26,7 @@
       本文：{{ Syutoku.es }}<br />
       -------------------------------------
     </div>
+
   </div>
 </template>
 
@@ -81,6 +86,11 @@ export default {
 </script>
 
 <style scoped>
+body {
+  height: 1000px;
+  margin-bottom: 100px;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -97,5 +107,15 @@ nav a {
 }
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.box {
+  position: relative;
+}
+
+button {
+  position: absolute;
+  bottom: -40px;
+  left: 49%;
 }
 </style>

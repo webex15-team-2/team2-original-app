@@ -1,7 +1,7 @@
 <template>
+  <h1>エントリーシート保存サイト</h1>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>|
+    <router-link to="/">Home</router-link>|
     <div v-if="!authState" style="display: inline-block; _display: inline">
       <router-link to="/signin">Sign In</router-link>|
       <router-link to="/signup">Sign Up</router-link>
@@ -59,12 +59,19 @@ export default {
 </script>
 
 <style>
+body {
+  background-image: url(./assets/backgroundpaper.png);
+  background-size: cover;
+  margin-bottom: 100px;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin-top: 150px;
 }
 
 nav {
