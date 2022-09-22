@@ -12,10 +12,10 @@
 
   <div class="box">
     <textarea cols="30" rows="10" v-model="esContent"></textarea>
-    <button v-on:click="post">保存</button>
+    <button class="hozon" v-on:click="post">保存</button>
   </div>
 
-  <div>
+  <div class="shutoku">
     <h2>取得</h2>
     <button v-on:click="getData">取得</button>
     <div v-for="(Syutoku, index) in syutoku" :key="index">
@@ -86,8 +86,7 @@ export default {
 
 <style scoped>
 body {
-  height: 1000px;
-  margin-bottom: 100px;
+  background-size: cover;
 }
 
 #app {
@@ -95,14 +94,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #28d;
 }
 nav {
   padding: 30px;
 }
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #28d;
 }
 nav a.router-link-exact-active {
   color: #42b983;
@@ -112,9 +111,15 @@ nav a.router-link-exact-active {
   position: relative;
 }
 
-button {
+.hozon {
   position: absolute;
+  width: 100px;
   bottom: -40px;
-  left: 49%;
+  left: 46%;
+  background-color: rgba(34, 136, 221, 0.9);
+}
+
+.shutoku {
+  margin-top: 100px;
 }
 </style>

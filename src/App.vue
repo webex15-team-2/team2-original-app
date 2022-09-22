@@ -61,7 +61,7 @@ export default {
 <style>
 body {
   background-image: url(./assets/backgroundpaper.png);
-  background-size: cover;
+  background-position: center;
   margin-bottom: 100px;
 }
 
@@ -80,7 +80,7 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #28d;
 }
 
 nav a.router-link-exact-active {
