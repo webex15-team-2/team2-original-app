@@ -84,12 +84,12 @@ button.btn {
 .btn--blue,
 a.btn--blue {
   color: #fff;
-  background-color: #05a;
+  background-color: #28d;
 }
 .btn--blue:hover,
 a.btn--blue:hover {
   color: #fff;
-  background: #033089;
+  background: rgba(66, 185, 131, 1);
 }
 
 body {
@@ -172,11 +172,11 @@ body {
 }
 
 .login input[type="submit"]:hover {
-  background: #17c;
+  background: #28d;
 }
 
 /* Buttons' focus effect */
 .login input[type="submit"]:focus {
-  border-color: #05a;
+  border-color: #28d;
 }
 </style>
